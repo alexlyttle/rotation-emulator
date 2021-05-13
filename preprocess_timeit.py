@@ -10,7 +10,7 @@ HDFPATH = 'data/example_grid.h5'
 COLUMNS = ['EEP', 'M/Msun', 'Age(Gyr)', '[Fe/H]', 'fk', 'Rocrit', 
            'Prot(days)', 'log(Teff)(K)', 'R/Rsun', 'Z/X(surface)']
 
-data = []
+code = """data = []
 
 # Loop through track data files and calculate EEPs and then append to data
 for i, fn in enumerate(FILENAMES):
@@ -20,9 +20,9 @@ for i, fn in enumerate(FILENAMES):
 
 data = np.concatenate(data)
 
-h5f = h5py.File(HDFPATH, 'w')
+"""
 
-dset = h5f.create_dataset('data', data=data)
-dset.attrs.create('columns', COLUMNS)
+number = 100
 
-h5f.close()
+execution_time = timeit.timeit(code, number=number, globals=globals())
+print(f'{execution_time/number}')
