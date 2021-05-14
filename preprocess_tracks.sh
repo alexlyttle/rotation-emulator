@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name preprocess
-#SBATCH --time 2:0:0
+#SBATCH --job-name preprocess_tracks
+#SBATCH --time 5:0:0
 #SBATCH --qos bbdefault
 #SBATCH --ntasks 8
 #SBATCH --nodes 1
