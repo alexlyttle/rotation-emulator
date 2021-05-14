@@ -2,8 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-_SOLAR_LOGG = 4.4384
-
+SOLAR_LOGG = 4.4384
+SOLAR_TEFF = 5776.0
+SOLAR_ZX = 0.023
 
 class Track:
     def __init__(self, path):
@@ -11,7 +12,7 @@ class Track:
         df['log(L/Lsun)'] = np.log10(df['L/Lsun'])
         df['log(R/Rsun)'] = np.log10(df['R/Rsun'])
         df['log(Z/X)(surface)'] = np.log10(df['Z/X(surface)'])
-        df['log(g)'] = _SOLAR_LOGG + np.log10(df['M/Msun']) - 2 * df['log(R/Rsun)']
+        df['log(g)'] = SOLAR_LOGG + np.log10(df['M/Msun']) - 2 * df['log(R/Rsun)']
 
         self.eep_index = {
             'preMS': df.index[0],
